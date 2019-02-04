@@ -1,14 +1,6 @@
 body{
     margin: 0px;
 }
-.bgImage{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-}
 .greeting,
 .form{
     display: none;
@@ -16,3 +8,22 @@ body{
 .showingOn{
     display: block;
 }
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
+}
+.bgImage{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+    background-size: auto;
+    animation: fadeIn 1s linear;
+}
+

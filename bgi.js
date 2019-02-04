@@ -2,17 +2,22 @@ const body = document.querySelector('body');
 const bodyHeight = window.innerHeight;
 const bodyWidth = window.innerWidth;
 
-function paintBackground(){
+const PIC_NUM = 21;
+
+function randomNum(){
+    const n = Math.random()*PIC_NUM+1;
+    return Math.floor(n);
+}
+
+function paintBackground(picNum){
     const randomImg = new Image();
-    randomImg.src = 'https://source.unsplash.com/random/?landscape';
+    randomImg.src = `/img/${picNum}.jpg`;
     randomImg.classList.add('bgImage');
     body.appendChild(randomImg);
-    randomImg.addEventListener('loadend',function(e){
-        console.log('finished img loading');
-    });
 }
 
 function init(){
-    paintBackground();
+    const num = randomNum();
+    paintBackground(num);
 }
 init();
