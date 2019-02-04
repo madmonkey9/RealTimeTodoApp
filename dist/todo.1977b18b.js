@@ -113,14 +113,40 @@ var toDos = [];
 
 function saveToDoList() {
   localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
+} // My Way to replaceToDo
+// function replaceToDo(id){
+//     console.log(id);
+//     const newTodo=[];
+//     toDos.forEach(function(todo){
+//         if(todo.id!==parseInt(id)){
+//             newTodo.push(todo);
+//         }
+//     });
+//     toDos = newTodo;
+//     saveToDoList();
+//     console.log(toDos);
+// }
+
+
+function deleteToDo(btn) {
+  var delBtn = btn.target;
+  var li = delBtn.parentNode;
+  toDoList.removeChild(li); // My Way to replace ToDo
+  // replaceToDo(li.id);
+
+  var newToDoList = toDos.filter(function (toDo) {
+    return toDo.id !== parseInt(li.id);
+  });
+  toDos = newToDoList;
+  saveToDoList();
 }
 
-function addToDoList(tdList) {
+function addToDoList(text) {
   var li = document.createElement('li');
-  var text = tdList;
   var span = document.createElement('span');
   var btn = document.createElement('button');
   var newId = toDos.length + 1;
+  btn.addEventListener('click', deleteToDo);
   span.innerHTML = text;
   btn.innerHTML = "❌";
   li.appendChild(btn);
@@ -129,7 +155,7 @@ function addToDoList(tdList) {
   toDoList.appendChild(li);
   var toDoObj = {
     text: text,
-    id: toDos.length + 1
+    id: newId
   };
   toDos.push(toDoObj);
   saveToDoList();
@@ -138,14 +164,19 @@ function addToDoList(tdList) {
 function handleSubmit(event) {
   event.preventDefault();
   var currentValue = toDoInput.value;
-  console.log(currentValue);
   toDoInput.value = "";
   addToDoList(currentValue);
-  saveToDoList(currentValue);
 }
 
 function loadTodo() {
   var loadedToDos = localStorage.getItem(TODOS_LS);
+  var parsedToDos = JSON.parse(loadedToDos);
+
+  if (loadedToDos !== null) {
+    parsedToDos.forEach(function (a) {
+      addToDoList(a.text);
+    });
+  }
 }
 
 function init() {
@@ -181,7 +212,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "8725" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "14558" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
