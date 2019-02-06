@@ -11,9 +11,12 @@ function randomNum(){
 
 function paintBackground(picNum){
     const randomImg = new Image();
-    randomImg.src = `/img/${picNum}.jpg`;
     randomImg.classList.add('bgImage');
-    body.appendChild(randomImg);
+    randomImg.onload = function(){
+        console.log('loaded');
+        body.appendChild(this);
+    };
+    randomImg.src = `img/${picNum}.jpg`;
 }
 
 function init(){
