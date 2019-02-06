@@ -1,2 +1,4 @@
 .cache
 dist
+#open API Key
+secret.js
