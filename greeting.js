@@ -1,6 +1,7 @@
 const form = document.querySelector(".js-form");
 const input = form.querySelector('input');
 const greeting = document.querySelector('.js-greeting');
+const todoForm = document.querySelector('.js-toDoForm');
 
 const USER_LS = "currentUser";
 const SHOWING_CN = "showingOn";
@@ -12,7 +13,6 @@ function saveName(name){
 function handleSubmit(event){
     const currentValue = input.value;
     event.preventDefault();
-    console.log(currentValue);
     addGreeting(currentValue);
     saveName(currentValue);
 }
@@ -26,6 +26,7 @@ function askName(){
 function addGreeting(name){
     form.classList.remove(SHOWING_CN)
     greeting.classList.add(SHOWING_CN);
+    todoForm.classList.add(SHOWING_CN);
     greeting.innerHTML=`Hello ${name}`;
 }
 

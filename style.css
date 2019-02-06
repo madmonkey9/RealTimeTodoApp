@@ -3,8 +3,35 @@ body{
     background-color: #576574;
     color: white;
 }
+
+h1, h3, h4{
+    margin: 0px;
+}
+h1{
+    font-size: 120px;
+}
+.greeting{
+    font-size: 40px;
+    font-weight: 100;
+    align-items: flex-start;
+}
+.toDoFormInfo{
+    font-size: 30px;
+    margin-top: 30px;
+}
+.main_wrap{
+    margin-top: 35vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.main_wrap *{
+    align-self: center;
+}
 .greeting,
-.form{
+.form,
+.js-toDoForm{
     display: none;
 }
 .showingOn{
@@ -23,9 +50,48 @@ body{
     top: 0;
     left: 0;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     z-index: -1;
     background-size: contain;
     animation: fadeIn 1s linear;
 }
-
+.js-weather{
+    position: absolute;
+    top:0;
+    right: 0;
+}
+.toDoInput{
+    margin-top: 20px;
+    background-color: unset;
+    border: none;
+    border-bottom: 2px solid white;
+    width: 480px;
+    font-size: 30px;
+    color: white;
+    text-align: center;
+}
+.toDoList{
+    list-style: none;
+    font-size: 20px;
+}
+.toDoList li button{
+    background-color: unset;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+.toDoList li button:hover{
+    color: red;
+}
+.form input{
+    background-color: unset;
+    font-size: 50px;
+    border: none;
+    border-bottom: 2px solid white;
+    color: white;
+    width: 400px;
+    
+}
+.form span{
+    font-size: 50px;
+}
